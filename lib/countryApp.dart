@@ -4,6 +4,7 @@ import 'package:country_sorting/screens/countryDetails.dart';
 import 'package:country_sorting/utils/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CountryApp extends StatelessWidget {
   const CountryApp({Key? key}) : super(key: key);
@@ -21,6 +22,15 @@ class CountryApp extends StatelessWidget {
 
         if (state is GetThemeModeState) {
           return MaterialApp(
+            builder: (context, widget) {
+              //add this line
+              ScreenUtil.setContext(context);
+              return MediaQuery(
+                //Setting font does not change with system font size
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                child: widget!,
+              );
+            },
             title: 'Country',
             theme: CountryTheme().lightTheme,
             darkTheme: CountryTheme().darkTheme,

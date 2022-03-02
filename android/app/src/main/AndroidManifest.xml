@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.country_sorting">
+     <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="country_sorting"
         android:name="${applicationName}"
